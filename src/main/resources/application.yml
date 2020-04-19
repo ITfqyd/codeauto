@@ -1,0 +1,35 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+    # 配置数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 使用druid连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/pro?useUnicode=true&characterEncoding=utf8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+
+###增加日志输出，方便定位问题
+logging:
+  level:
+    root : warn
+    com.cxyxs.mybatisplus.dao: trace
+  ###控制台输出格式
+  pattern:
+    console: '%p%m%n'
+
+mybatis-plus:
+  mapper-locations: classpath*:/com/cxyxs/mybatisplus/mapper/xml/*.xml
+  global-config:
+    db-config:
+      ###逻辑未删除的值
+      logic-not-delete-value: 0
+      ###逻辑已删除的值
+      logic-delete-value: 1
+
+
+  ####扫描swagger注解
+  swagger:
+    base-package: com.cxyxs
